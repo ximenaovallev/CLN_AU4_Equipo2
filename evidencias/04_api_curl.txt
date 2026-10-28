@@ -1,0 +1,20 @@
+$ POST /orders/O999/confirm   (inexistente)
+{"detail":"No existe el pedido O999"}  -> HTTP 404
+$ POST /orders/O013/confirm   (1a vez)
+{"id":"O013","status":"CONFIRMED","events":["OrderConfirmed"]}  -> HTTP 200
+$ POST /orders/O013/confirm   (2a vez)
+{"detail":"Solo DRAFT puede confirmarse (estado actual: CONFIRMED)"}  -> HTTP 409
+$ POST /orders/O007/confirm   (sin artículos)
+{"detail":"Requiere artículos y cliente activo"}  -> HTTP 422
+$ POST /orders/O013/ship {}   (sin guía)
+{"detail":"El envío requiere número de guía"}  -> HTTP 422
+$ POST /orders/O013/ship      (con guía)
+{"id":"O013","status":"SHIPPED","events":["OrderConfirmed","OrderShipped"]}  -> HTTP 200
+$ POST /orders/O013/cancel    (desde SHIPPED)
+{"detail":"Solo CONFIRMED puede cancelarse (estado actual: SHIPPED)"}  -> HTTP 409
+$ POST /orders/O009/items SKU003 x2
+{"detail":"Máximo 20 unidades (actual 19, se intentó agregar 2)"}  -> HTTP 422
+$ GET /orders/O001/discount
+{"id":"O001","rule":"VIP_10","percent":"10%","subtotal":"2100.00","discount":"210.00","total":"1890.00"}  -> HTTP 200
+$ GET /docs
+  -> HTTP 200

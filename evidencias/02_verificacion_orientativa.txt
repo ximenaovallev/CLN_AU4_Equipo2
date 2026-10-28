@@ -1,0 +1,9 @@
+O001 10%: True 5%: False OR: True -> 10% 2100.00 - 210.00 = 1890.00
+O006 10%: False 5%: True OR: True -> 5% 18000.00 - 900.00 = 17100.00
+O005 10%: False 5%: False OR: False -> 0% 2100.00 - 0.00 = 2100.00
+O010 10%: False 5%: False OR: False -> 0% 500.00 - 0.00 = 500.00
+--- Ejercicio O013
+OrderStatus.DRAFT 1 600.00
+OrderStatus.CONFIRMED ['OrderConfirmed']
+Segundo confirm rechazado: Solo DRAFT puede confirmarse (estado actual: CONFIRMED)
+CONFIRMED ['OrderConfirmed']

@@ -1,0 +1,18 @@
+E01 O001 OK  | evaluar_descuento() | Descuento 10%; total final 1890.00 MXN | eventos: (ninguno)
+E02 O002 OK  | evaluar_descuento() | Descuento 0%; total final 1050.00 MXN | eventos: (ninguno)
+E03 O003 OK  | confirm() | Rechazado (InvalidOrderData); estado final DRAFT | eventos: (ninguno)
+E04 O005 OK  | evaluar_descuento() | Descuento 0%; total final 2100.00 MXN | eventos: (ninguno)
+E05 O006 OK  | evaluar_descuento() | Descuento 5%; total final 17100.00 MXN | eventos: (ninguno)
+E06 O007 OK  | confirm() | Rechazado (InvalidOrderData); estado final DRAFT | eventos: (ninguno)
+E07 O008 OK  | confirm() | Éxito; estado final CONFIRMED | eventos: OrderConfirmed
+E08 O009 OK  | add_item(SKU003 x2) | Rechazado (OrderItemLimitExceeded); estado final DRAFT | eventos: (ninguno)
+E09 O010 OK  | evaluar_descuento() | Descuento 0%; total final 500.00 MXN | eventos: (ninguno)
+E10 O011 OK  | evaluar_descuento() | Descuento 0%; total final 1500.00 MXN | eventos: (ninguno)
+E11 O012 OK  | confirm() → ship("") | Rechazado (InvalidOrderData); estado final CONFIRMED | eventos: OrderConfirmed
+E12 O013 OK  | confirm() → confirm() | Rechazado (InvalidOrderTransition); estado final CONFIRMED | eventos: OrderConfirmed
+E13 O014 OK  | confirm() → ship("GUIA-MX-0001") → cancel("Cliente solicitó la cancelación") | Rechazado (InvalidOrderTransition); estado final SHIPPED | eventos: OrderConfirmed, OrderShipped
+E14 O015 OK  | confirm() → ship("GUIA-MX-0001") → return_order() | Éxito; estado final RETURNED | eventos: OrderConfirmed, OrderShipped, OrderReturned
+E15 O016 OK  | confirm() → ship("GUIA-MX-0001") → deliver() | Éxito; estado final DELIVERED | eventos: OrderConfirmed, OrderShipped, OrderDelivered
+
+15/15 escenarios cumplen su objetivo
+Bitácora guardada en docs/BITACORA_E01_E15.md
